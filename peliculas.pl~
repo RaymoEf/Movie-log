@@ -1,11 +1,11 @@
 
 pelicula(boogieNights1997).
 director(boogieNights1997,paulThomasAnderson).
-genero(boogieNights1997,[drama]).
+genero(boogieNights1997,drama).
 
 pelicula(fruitvaleStation).
 director(fruitvaleStation,ryanCoogler).
-genero(fruitvaleStation,[drama]).
+genero(fruitvaleStation,drama).
 
 pelicula(malcomYMarie).
 director(malcomYMarie,samLevinson).
@@ -25,7 +25,7 @@ genero(silverLiningsPlaybook,[drama,comediaRomantica]).
 
 pelicula(yessGood).
 director(yessGood,karenMaine).
-genero(yessGood,[comedia]).
+genero(yessGood,comedia).
 
 pelicula(siSupieras).
 director(siSupieras,aliceWu).
