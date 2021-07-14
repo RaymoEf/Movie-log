@@ -1,4 +1,6 @@
 
+generos([drama,romance,comedia,misterio,suspenso,comediaRomantica,romance,musical,horror,accion,crimen,ciencia_ficcion,aventura,fantasia]).
+
 pelicula(boogieNights1997).
 director(boogieNights1997,paulThomasAnderson).
 genero(boogieNights1997,[drama]).
