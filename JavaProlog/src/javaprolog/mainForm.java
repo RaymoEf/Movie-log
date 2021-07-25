@@ -31,12 +31,12 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
             Query con = new Query(conexion);
             System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
             System.out.println("Consultando");
-            String cons="director(X,Y).";
+            String cons="director(Y,X).";
             Query ejecutar = new Query(cons);
             if(ejecutar.hasSolution())
             {
                 while(ejecutar.hasMoreSolutions()){
-                    testList.add(ejecutar.nextSolution().get("Y").toString());
+                    testList.add(ejecutar.nextSolution().get("X").toString());
                 }
             }
             con.close();
@@ -51,6 +51,29 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
             
         }
 
+    }
+    
+    public String consulta(String cons){
+        Random rd = new Random();
+        List<String> testList = new ArrayList<String>();
+        String conexion="consult('peliculas.pl')";
+        Query con = new Query(conexion);
+        System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
+        System.out.println("Consultando");
+        Query ejecutar = new Query(cons);
+        if(ejecutar.hasSolution())
+            {
+                while(ejecutar.hasMoreSolutions()){
+                    testList.add(ejecutar.nextSolution().get("X").toString());
+                }
+                //String signo = ejecutar.oneSolution().get("X").toString();
+                //jTextField3.setText(signo);
+            }
+            ejecutar.close();
+            con.close();
+            int tam = testList.size();
+            int indx = rd.nextInt(tam);
+            return testList.get(indx);
     }
     
    
@@ -396,14 +419,10 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jRadioButtonFantasia)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(271, 271, 271)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addComponent(btnRecomendarG))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addComponent(jLabel1)))
+                .addContainerGap(284, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,7 +448,7 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
                                 .addContainerGap())
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jRadioButtonhorror)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
@@ -442,6 +461,10 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
                             .addComponent(jRadioButtonMisterio)
                             .addComponent(jRadioButtonComediaRomantica))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(btnRecomendarG)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,9 +502,9 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButtonComediaRomantica)
                     .addComponent(jRadioButtonAventura))
-                .addGap(31, 31, 31)
+                .addGap(29, 29, 29)
                 .addComponent(btnRecomendarG)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Género", jPanel4);
@@ -507,12 +530,7 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
 
     private void btnRecomendarGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecomendarGActionPerformed
         try{
-            Random rd = new Random();
-            List<String> testList = new ArrayList<String>();
-            String conexion="consult('peliculas.pl')";
-            Query con = new Query(conexion);
-            System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
-            System.out.println("Consultando");
+            
             String cons="recomienda(X,Y)";
             if(jRadioButtonDrama.isSelected()){
                 cons = "recomienda(X,drama).";
@@ -544,20 +562,7 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
                 cons="";
             }
             if(!cons.isEmpty()){
-                Query ejecutar = new Query(cons);
-                if(ejecutar.hasSolution())
-                {
-                    while(ejecutar.hasMoreSolutions()){
-                        testList.add(ejecutar.nextSolution().get("X").toString());
-                    }
-                //String signo = ejecutar.oneSolution().get("X").toString();
-                //jTextField3.setText(signo);
-                }
-                ejecutar.close();
-                con.close();
-                int tam = testList.size();
-                int indx = rd.nextInt(tam);
-                txtRecGen.setText(testList.get(indx));
+                txtRecGen.setText(consulta(cons));
             }else{
                 JOptionPane.showMessageDialog(frame, "Por favor, elija una opcion.");
             }
@@ -570,25 +575,8 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            Random rd = new Random();
-            List<String> testList = new ArrayList<String>();
-            String conexion="consult('peliculas.pl')";
-            Query con = new Query(conexion);
-            System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
-            System.out.println("Consultando");
             String cons="director(X,"+jCBDirectores.getSelectedItem().toString()+").";
-            Query ejecutar = new Query(cons);
-            if(ejecutar.hasSolution())
-            {
-                while(ejecutar.hasMoreSolutions()){
-                    testList.add(ejecutar.nextSolution().get("X").toString());
-                }
-            }
-            con.close();
-            ejecutar.close();
-            int tam = testList.size();
-            int indx = rd.nextInt(tam);
-            txtDirector.setText(testList.get(indx));
+            txtDirector.setText(consulta(cons));
         }catch(Exception e){
             
         }
@@ -648,24 +636,8 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
          if(posibleGenero.size()>0){
              int genindx=rd.nextInt(posibleGenero.size());
              try{
-                 List<String> testList = new ArrayList<String>();
-                String conexion="consult('peliculas.pl')";
-                Query con = new Query(conexion);
-                System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
-                System.out.println("Consultando");
                 String cons="recomienda(X,"+posibleGenero.get(genindx)+").";
-                Query ejecutar = new Query(cons);
-                if(ejecutar.hasSolution())
-                {
-                    while(ejecutar.hasMoreSolutions()){
-                        testList.add(ejecutar.nextSolution().get("X").toString());
-                    }
-                }
-                con.close();
-                ejecutar.close();
-                int tam = testList.size();
-                int indx = rd.nextInt(tam);
-                txtTest.setText(testList.get(indx));
+                txtTest.setText(consulta(cons));
              }catch(Exception e){
                  
              }
