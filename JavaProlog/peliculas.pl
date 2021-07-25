@@ -21,6 +21,26 @@ pelicula(el_laberinto_del_fauno).
 pelicula(the_disaster_artist).
 pelicula(supercool).
 pelicula(nightcrawler).
+pelicula(busca_dela_felicidad).
+pelicula(braveheart).
+pelicula(braveheart).
+pelicula(hombres_de_honor).
+pelicula(lawrenceArabia).
+pelicula(teoria_del_todo).
+pelicula(patchAdams).
+pelicula(lobo_de_wallStreet).
+pelicula(chicaDanesa).
+pelicula(figurasOcultas).
+pelicula(elIrlandes).
+pelicula(entrenadorCarter).
+pelicula(metropolis).
+pelicula(spaceJam).
+pelicula(purgaInfinita).
+pelicula(viudaNegra).
+pelicula(guerra_del_manana).
+pelicula(luca).
+pelicula(tiempo).
+pelicula(cruella).
 
 director(boogieNights1997,paulThomasAnderson).
 director(fruitvaleStation,ryanCoogler).
@@ -42,6 +62,27 @@ director(el_laberinto_del_fauno,guillermo_del_toro).
 director(the_disaster_artist, james_franco).
 director(supercool,greg_mottola).
 director(nightcrawler, dan_gilroy).
+director(busca_dela_felicidad,gabriele_Muccino).
+director(braveheart,melGibson).
+director(braveheart,melGibson).
+director(hombres_de_honor,georgeTillman).
+director(lawrenceArabia,davidLean).
+director(toria_del_todo,jamesMarsh).
+director(patchAdams,tomShadyac).
+director(lobo_de_wallStreet,martinScorsese).
+director(chicaDanesa,tomHooper).
+director(figurasOcultas,theodoreMelfi).
+director(elIrlandes,martinScorsese).
+director(entrenadorCarter,thomasCarter).
+director(metropolis,fritzLang).
+director(spaceJam,malcolmD).
+director(purgaInfinita,everardoGout).
+director(viudaNegra,cateShortlan).
+director(guerra_del_manana,chrisMcKay).
+director(luca,enricoCasarosa).
+director(tiempo,nightShyamalan).
+director(cruella,craigGillespie).
+
 
 genero(boogieNights1997,[drama]).
 genero(fruitvaleStation,[drama]).
@@ -63,7 +104,28 @@ genero(el_laberinto_del_fauno,[drama,fantasia]).
 genero(the_disaster_artist,[comedia,drama]).
 genero(supercool,[comedia]).
 genero(nightcrawler,[misterio,drama]).
+genero(busca_dela_felicidad,[drama]).
+genero(braveheart,[drama]).
+genero(braveheart,[drama]).
+genero(hombres_de_honor,[drama]).
+genero(lawrenceArabia,[aventura]).
+genero(teoria_del_todo,[drama]).
+genero(patchAdams,[drama,comedia]).
+genero(lobo_de_wallStreet,[drama]).
+genero(chicaDanesa,[drama]).
+genero(figurasOcultas,[drama]).
+genero(elIrlandes,[suspenso]).
+genero(entrenadorCarter,[comedia,drama]).
+genero(metropolis,[drama]).
+genero(spaceJam,[comedia]).
+genero(purgaInfinita,[suspenso,accion]).
+genero(viudaNegra,[accion,aventura]).
+genero(guerra_del_manana,[suspenso,accion]).
+genero(luca,[comedia]).
+genero(tiempo,[suspenso]).
+genero(cruella,[comedia,drama]).
 
 recomienda(Pelicula, Genero) :- genero(Pelicula, Y) , member(Genero,Y).
+directores(X) :- director(_,X).
 
 
