@@ -4,20 +4,56 @@
  * and open the template in the editor.
  */
 package javaprolog;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import org.jpl7.Query;
+import java.util.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author patit
  */
-public class mainForm extends javax.swing.JFrame {
+public class mainForm extends javax.swing.JFrame implements ActionListener {
+    panel1 panel1 = new panel1();
+    private Component frame;
 
     /**
      * Creates new form mainForm
      */
     public mainForm() {
         initComponents();
+        try{
+            List<String> testList = new ArrayList<String>();
+            String conexion="consult('peliculas.pl')";
+            Query con = new Query(conexion);
+            System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
+            System.out.println("Consultando");
+            String cons="director(X,Y).";
+            Query ejecutar = new Query(cons);
+            if(ejecutar.hasSolution())
+            {
+                while(ejecutar.hasMoreSolutions()){
+                    testList.add(ejecutar.nextSolution().get("Y").toString());
+                }
+            }
+            con.close();
+            ejecutar.close();
+            Set<String> set = new HashSet<>(testList);
+            testList.clear();
+            testList.addAll(set);
+            DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+            testList.forEach((n) -> modelo.addElement(n));
+            jCBDirectores.setModel(modelo);
+        }catch(Exception e){
+            
+        }
+
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,111 +64,615 @@ public class mainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        groupGenero = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        jRadioButton9 = new javax.swing.JRadioButton();
+        jRadioButton10 = new javax.swing.JRadioButton();
+        jRadioButton11 = new javax.swing.JRadioButton();
+        jRadioButton12 = new javax.swing.JRadioButton();
+        jRadioButton13 = new javax.swing.JRadioButton();
+        jRadioButton14 = new javax.swing.JRadioButton();
+        jRadioButton15 = new javax.swing.JRadioButton();
+        jRadioButton16 = new javax.swing.JRadioButton();
+        jRadioButton17 = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        txtTest = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jCBDirectores = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtDirector = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jRadioButtonDrama = new javax.swing.JRadioButton();
+        jRadioButtonRomance = new javax.swing.JRadioButton();
+        jRadioButtonComedia = new javax.swing.JRadioButton();
+        jRadioButtonMisterio = new javax.swing.JRadioButton();
+        Suspenso = new javax.swing.JRadioButton();
+        jRadioButtonComediaRomantica = new javax.swing.JRadioButton();
+        jRadioButtonMusical = new javax.swing.JRadioButton();
+        jRadioButtonhorror = new javax.swing.JRadioButton();
+        jRadioButtonAccion = new javax.swing.JRadioButton();
+        jRadioButtonCrimen = new javax.swing.JRadioButton();
+        jRadioButtonScifi = new javax.swing.JRadioButton();
+        jRadioButtonAventura = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnRecomendarG = new javax.swing.JButton();
+        txtRecGen = new javax.swing.JTextField();
+        jRadioButtonFantasia = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ingresa tu dia (DD)");
+        jLabel5.setText("¿Dirias que te encanta la musica?");
 
-        jLabel2.setText("Ingresa tu mes (MM)");
+        jLabel6.setText("¿Te gusta austarte con una pelicula?");
 
-        jLabel3.setText("tu horoscopo es:");
+        jLabel7.setText("¿Prefieres diversión o acción?");
 
-        jButton1.setText("Consultar");
+        jLabel8.setText("¿Te consideras alguien sentimental?");
+
+        jLabel9.setText("¿Te gusta resolver misterios?");
+
+        jLabel10.setText("¿Eres alguien con una buena imaginación?");
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Si");
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("No");
+
+        buttonGroup2.add(jRadioButton5);
+        jRadioButton5.setText("Completamente");
+
+        buttonGroup2.add(jRadioButton6);
+        jRadioButton6.setText("Un poco");
+
+        buttonGroup2.add(jRadioButton9);
+        jRadioButton9.setText("No");
+
+        buttonGroup3.add(jRadioButton10);
+        jRadioButton10.setText("Diversión");
+
+        buttonGroup3.add(jRadioButton11);
+        jRadioButton11.setText("Acción");
+
+        buttonGroup4.add(jRadioButton12);
+        jRadioButton12.setText("Si");
+
+        buttonGroup4.add(jRadioButton13);
+        jRadioButton13.setText("No");
+
+        buttonGroup5.add(jRadioButton14);
+        jRadioButton14.setText("Si");
+
+        buttonGroup5.add(jRadioButton15);
+        jRadioButton15.setText("No");
+
+        buttonGroup6.add(jRadioButton16);
+        jRadioButton16.setText("Si");
+
+        buttonGroup6.add(jRadioButton17);
+        jRadioButton17.setText("No");
+
+        jButton2.setText("Generar Recomendacion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Te recomiendo:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton2))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton9)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addGap(37, 37, 37))
+                                    .addComponent(txtTest, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton12)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton13))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton10)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton11))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton14)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton15))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton16)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton17)))
+                                .addGap(291, 291, 291)))))
+                .addGap(20, 20, 20))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 38, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton5)
+                    .addComponent(jRadioButton6)
+                    .addComponent(jRadioButton9)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton10)
+                    .addComponent(jLabel7)
+                    .addComponent(jRadioButton11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton12)
+                    .addComponent(jRadioButton13)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jRadioButton14)
+                    .addComponent(jRadioButton15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jRadioButton16)
+                    .addComponent(jRadioButton17))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(194, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Test", jPanel1);
+
+        jCBDirectores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Elije un director de la lista");
+
+        jLabel4.setText("Te recomiendo:");
+
+        jButton1.setText("Recomendar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCBDirectores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(230, 230, 230)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtDirector)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(284, 284, 284)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(273, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel3)
+                .addGap(33, 33, 33)
+                .addComponent(jCBDirectores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(201, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Director", jPanel2);
+
+        jLabel1.setText("¿Qué género te gustaria ver?");
+
+        groupGenero.add(jRadioButtonDrama);
+        jRadioButtonDrama.setText("Drama");
+
+        groupGenero.add(jRadioButtonRomance);
+        jRadioButtonRomance.setText("Romance");
+
+        groupGenero.add(jRadioButtonComedia);
+        jRadioButtonComedia.setText("Comedia");
+
+        groupGenero.add(jRadioButtonMisterio);
+        jRadioButtonMisterio.setText("Misterio");
+
+        groupGenero.add(Suspenso);
+        Suspenso.setText("Suspenso");
+
+        groupGenero.add(jRadioButtonComediaRomantica);
+        jRadioButtonComediaRomantica.setText("Comedia Romantica");
+
+        groupGenero.add(jRadioButtonMusical);
+        jRadioButtonMusical.setText("Musical");
+
+        groupGenero.add(jRadioButtonhorror);
+        jRadioButtonhorror.setText("Horror");
+
+        groupGenero.add(jRadioButtonAccion);
+        jRadioButtonAccion.setText("Accion");
+
+        groupGenero.add(jRadioButtonCrimen);
+        jRadioButtonCrimen.setText("Crimen");
+
+        groupGenero.add(jRadioButtonScifi);
+        jRadioButtonScifi.setText("Ciencia Ficcion");
+
+        groupGenero.add(jRadioButtonAventura);
+        jRadioButtonAventura.setText("Aventura");
+
+        jLabel2.setText("Te recomiendo:");
+
+        btnRecomendarG.setText("Recomendar");
+        btnRecomendarG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecomendarGActionPerformed(evt);
+            }
+        });
+
+        groupGenero.add(jRadioButtonFantasia);
+        jRadioButtonFantasia.setText("Fantasia");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jRadioButtonFantasia)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(271, 271, 271)
+                            .addComponent(jLabel1))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(150, 150, 150)
+                            .addComponent(btnRecomendarG))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(Suspenso)
+                                .addGap(129, 129, 129))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jRadioButtonComedia, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonRomance, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonDrama, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonAccion)
+                                    .addComponent(jRadioButtonCrimen)
+                                    .addComponent(jRadioButtonScifi)
+                                    .addComponent(jRadioButtonAventura)
+                                    .addComponent(jRadioButtonMusical))
+                                .addContainerGap())
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jRadioButtonhorror)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(113, 113, 113))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(txtRecGen, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(38, 38, 38))))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonMisterio)
+                            .addComponent(jRadioButtonComediaRomantica))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButtonDrama)
+                            .addComponent(jRadioButtonMusical)
+                            .addComponent(jRadioButtonFantasia))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButtonRomance)
+                            .addComponent(jRadioButtonhorror)
+                            .addComponent(txtRecGen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(46, 46, 46)))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonComedia)
+                    .addComponent(jRadioButtonAccion))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonMisterio)
+                    .addComponent(jRadioButtonCrimen))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Suspenso)
+                    .addComponent(jRadioButtonScifi))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonComediaRomantica)
+                    .addComponent(jRadioButtonAventura))
+                .addGap(31, 31, 31)
+                .addComponent(btnRecomendarG)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Género", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jButton1)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(49, 49, 49))
+                .addContainerGap()
+                .addComponent(jTabbedPane1))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        try
-        {
-            String dia = jTextField1.getText();
-            String mes = jTextField2.getText();
+    private void btnRecomendarGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecomendarGActionPerformed
+        try{
+            Random rd = new Random();
+            List<String> testList = new ArrayList<String>();
             String conexion="consult('peliculas.pl')";
             Query con = new Query(conexion);
             System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
             System.out.println("Consultando");
-            String cons="recomienda(X,drama).";
+            String cons="recomienda(X,Y)";
+            if(jRadioButtonDrama.isSelected()){
+                cons = "recomienda(X,drama).";
+            }else if(jRadioButtonRomance.isSelected()){
+                cons = "recomienda(X,romance).";
+            }else if(jRadioButtonComedia.isSelected()){
+                cons = "recomienda(X,comedia).";
+            }else if(jRadioButtonMisterio.isSelected()){
+                cons = "recomienda(X,misterio).";
+            }else if(Suspenso.isSelected()){
+                cons = "recomienda(X,suspenso).";
+            }else if(jRadioButtonComediaRomantica.isSelected()){
+                cons = "recomienda(X,comediaRomantica).";
+            }else if(jRadioButtonMusical.isSelected()){
+                cons = "recomienda(X,musical).";
+            }else if(jRadioButtonhorror.isSelected()){
+                cons = "recomienda(X,horror).";
+            }else if(jRadioButtonAccion.isSelected()){
+                cons = "recomienda(X,accion).";
+            }else if(jRadioButtonCrimen.isSelected()){
+                cons = "recomienda(X,crimen).";
+            }else if(jRadioButtonScifi.isSelected()){
+                cons = "recomienda(X,ciencia_ficcion).";
+            }else if(jRadioButtonAventura.isSelected()){
+                cons = "recomienda(X,aventura).";
+            }else if(jRadioButtonFantasia.isSelected()){
+                cons = "recomienda(X,fantasia).";
+            }else{
+                cons="";
+            }
+            if(!cons.isEmpty()){
+                Query ejecutar = new Query(cons);
+                if(ejecutar.hasSolution())
+                {
+                    while(ejecutar.hasMoreSolutions()){
+                        testList.add(ejecutar.nextSolution().get("X").toString());
+                    }
+                //String signo = ejecutar.oneSolution().get("X").toString();
+                //jTextField3.setText(signo);
+                }
+                ejecutar.close();
+                con.close();
+                int tam = testList.size();
+                int indx = rd.nextInt(tam);
+                txtRecGen.setText(testList.get(indx));
+            }else{
+                JOptionPane.showMessageDialog(frame, "Por favor, elija una opcion.");
+            }
+            
+        }catch(Exception e){
+            
+        }
+        
+    }//GEN-LAST:event_btnRecomendarGActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            Random rd = new Random();
+            List<String> testList = new ArrayList<String>();
+            String conexion="consult('peliculas.pl')";
+            Query con = new Query(conexion);
+            System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
+            System.out.println("Consultando");
+            String cons="director(X,"+jCBDirectores.getSelectedItem().toString()+").";
             Query ejecutar = new Query(cons);
             if(ejecutar.hasSolution())
             {
                 while(ejecutar.hasMoreSolutions()){
-                    System.out.println(ejecutar.nextSolution().get("X").toString());
+                    testList.add(ejecutar.nextSolution().get("X").toString());
                 }
-                //String signo = ejecutar.oneSolution().get("X").toString();
-                //jTextField3.setText(signo);
             }
-        }catch(Exception e)
-        {
+            con.close();
+            ejecutar.close();
+            int tam = testList.size();
+            int indx = rd.nextInt(tam);
+            txtDirector.setText(testList.get(indx));
+        }catch(Exception e){
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Random rd = new Random();
+        List<String> posibleGenero = new ArrayList<String>();
+        if(jRadioButton1.isSelected() || jRadioButton2.isSelected()){
+            if(jRadioButton1.isSelected()){
+                posibleGenero.add("musical");
+            }
+        }
+        if(jRadioButton5.isSelected() || jRadioButton6.isSelected()|| jRadioButton9.isSelected()){
+            if(jRadioButton5.isSelected()){
+                posibleGenero.add("horror");
+                posibleGenero.add("suspenso");
+
+            }
+            if(jRadioButton6.isSelected()){
+                posibleGenero.add("suspenso");
+            }
+        }
+         if(jRadioButton10.isSelected() || jRadioButton11.isSelected()){
+            if(jRadioButton10.isSelected()){
+                posibleGenero.add("comedia");
+                posibleGenero.add("comediaRomantica");
+
+            }
+            if(jRadioButton11.isSelected()){
+                posibleGenero.add("acción");
+                posibleGenero.add("aventura");
+            }
+         }
+         if(jRadioButton12.isSelected() || jRadioButton13.isSelected()){
+            if(jRadioButton12.isSelected()){
+                posibleGenero.add("romance");
+                posibleGenero.add("comediaRomantica");
+                posibleGenero.add("drama");
+
+            }
+         }
+         if(jRadioButton14.isSelected() || jRadioButton15.isSelected()){
+             if(jRadioButton14.isSelected()){
+                posibleGenero.add("misterio");
+                posibleGenero.add("crimen");
+
+            }
+         }
+         if(jRadioButton16.isSelected() || jRadioButton17.isSelected()){
+             if(jRadioButton16.isSelected()){
+                posibleGenero.add("cienciaFiccion");
+                posibleGenero.add("fantasia");
+
+            }
+         }
+         if(posibleGenero.size()>0){
+             int genindx=rd.nextInt(posibleGenero.size());
+             try{
+                 List<String> testList = new ArrayList<String>();
+                String conexion="consult('peliculas.pl')";
+                Query con = new Query(conexion);
+                System.out.println(conexion+"     "+(con.hasMoreSolutions()?"Aceptado":"Fallado"));
+                System.out.println("Consultando");
+                String cons="recomienda(X,"+posibleGenero.get(genindx)+").";
+                Query ejecutar = new Query(cons);
+                if(ejecutar.hasSolution())
+                {
+                    while(ejecutar.hasMoreSolutions()){
+                        testList.add(ejecutar.nextSolution().get("X").toString());
+                    }
+                }
+                con.close();
+                ejecutar.close();
+                int tam = testList.size();
+                int indx = rd.nextInt(tam);
+                txtTest.setText(testList.get(indx));
+             }catch(Exception e){
+                 
+             }
+         }else{
+             JOptionPane.showMessageDialog(frame, "Por favor, Conteste las preguntas.");
+         }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,13 +710,65 @@ public class mainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Suspenso;
+    private javax.swing.JButton btnRecomendarG;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.ButtonGroup groupGenero;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jCBDirectores;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton10;
+    private javax.swing.JRadioButton jRadioButton11;
+    private javax.swing.JRadioButton jRadioButton12;
+    private javax.swing.JRadioButton jRadioButton13;
+    private javax.swing.JRadioButton jRadioButton14;
+    private javax.swing.JRadioButton jRadioButton15;
+    private javax.swing.JRadioButton jRadioButton16;
+    private javax.swing.JRadioButton jRadioButton17;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JRadioButton jRadioButton9;
+    private javax.swing.JRadioButton jRadioButtonAccion;
+    private javax.swing.JRadioButton jRadioButtonAventura;
+    private javax.swing.JRadioButton jRadioButtonComedia;
+    private javax.swing.JRadioButton jRadioButtonComediaRomantica;
+    private javax.swing.JRadioButton jRadioButtonCrimen;
+    private javax.swing.JRadioButton jRadioButtonDrama;
+    private javax.swing.JRadioButton jRadioButtonFantasia;
+    private javax.swing.JRadioButton jRadioButtonMisterio;
+    private javax.swing.JRadioButton jRadioButtonMusical;
+    private javax.swing.JRadioButton jRadioButtonRomance;
+    private javax.swing.JRadioButton jRadioButtonScifi;
+    private javax.swing.JRadioButton jRadioButtonhorror;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField txtDirector;
+    private javax.swing.JTextField txtRecGen;
+    private javax.swing.JTextField txtTest;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

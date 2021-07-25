@@ -1,5 +1,5 @@
 
-generos([drama,romance,comedia,misterio,suspenso,comediaRomantica,romance,musical,horror,accion,crimen,ciencia_ficcion,aventura,fantasia]).
+generos([drama,romance,comedia,misterio,suspenso,comediaRomantica,musical,horror,accion,crimen,ciencia_ficcion,aventura,fantasia]).
 
 pelicula(boogieNights1997).
 pelicula(fruitvaleStation).
