@@ -94,6 +94,8 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
         buttonGroup4 = new javax.swing.ButtonGroup();
         buttonGroup5 = new javax.swing.ButtonGroup();
         buttonGroup6 = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -146,16 +148,20 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
         jRadioButtonFantasia = new javax.swing.JRadioButton();
         jLabel13 = new javax.swing.JLabel();
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(1, 22, 39));
         jPanel1.setForeground(new java.awt.Color(240, 240, 240));
 
         jLabel5.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel5.setText("¿Dirias que te encanta la musica?");
+        jLabel5.setText("¿Dirías que te encanta la música?");
 
         jLabel6.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel6.setText("¿Te gusta austarte con una pelicula?");
+        jLabel6.setText("¿Te gusta asustarte con una pelicula?");
 
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("¿Prefieres diversión o acción?");
@@ -221,7 +227,7 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
         jRadioButton17.setForeground(new java.awt.Color(240, 240, 240));
         jRadioButton17.setText("No");
 
-        jButton2.setText("Generar Recomendacion");
+        jButton2.setText("Generar Recomendación");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -352,7 +358,7 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
         jCBDirectores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel3.setText("Elije un director de la lista");
+        jLabel3.setText("Elige un director de la lista");
 
         jLabel4.setForeground(new java.awt.Color(240, 240, 240));
         jLabel4.setText("Te recomiendo:");
@@ -430,7 +436,7 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
         Suspenso.setText("Suspenso");
 
         groupGenero.add(jRadioButtonComediaRomantica);
-        jRadioButtonComediaRomantica.setText("Comedia Romantica");
+        jRadioButtonComediaRomantica.setText("Comedia romántica");
 
         groupGenero.add(jRadioButtonMusical);
         jRadioButtonMusical.setText("Musical");
@@ -439,13 +445,13 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
         jRadioButtonhorror.setText("Horror");
 
         groupGenero.add(jRadioButtonAccion);
-        jRadioButtonAccion.setText("Accion");
+        jRadioButtonAccion.setText("Acción");
 
         groupGenero.add(jRadioButtonCrimen);
         jRadioButtonCrimen.setText("Crimen");
 
         groupGenero.add(jRadioButtonScifi);
-        jRadioButtonScifi.setText("Ciencia Ficcion");
+        jRadioButtonScifi.setText("Ciencia ficción");
 
         groupGenero.add(jRadioButtonAventura);
         jRadioButtonAventura.setText("Aventura");
@@ -460,7 +466,7 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
         });
 
         groupGenero.add(jRadioButtonFantasia);
-        jRadioButtonFantasia.setText("Fantasia");
+        jRadioButtonFantasia.setText("Fantasía");
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaprolog/d09f43d4116d9480cc034009b62428a7-dibujado-a-mano-camara-de-cine-de-cine(1).png"))); // NOI18N
 
@@ -794,7 +800,9 @@ public class mainForm extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JRadioButton jRadioButtonRomance;
     private javax.swing.JRadioButton jRadioButtonScifi;
     private javax.swing.JRadioButton jRadioButtonhorror;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtDirector;
     private javax.swing.JTextField txtRecGen;
     private javax.swing.JTextField txtTest;

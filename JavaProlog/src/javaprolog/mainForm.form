@@ -16,6 +16,21 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup6">
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -227,7 +242,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="f0" red="f0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xbf;Dirias que te encanta la musica?"/>
+                <Property name="text" type="java.lang.String" value="&#xbf;Dir&#xed;as que te encanta la m&#xfa;sica?"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
@@ -235,7 +250,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="f0" red="f0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xbf;Te gusta austarte con una pelicula?"/>
+                <Property name="text" type="java.lang.String" value="&#xbf;Te gusta asustarte con una pelicula?"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
@@ -415,7 +430,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Generar Recomendacion"/>
+                <Property name="text" type="java.lang.String" value="Generar Recomendaci&#xf3;n"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -527,7 +542,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="f0" red="f0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Elije un director de la lista"/>
+                <Property name="text" type="java.lang.String" value="Elige un director de la lista"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
@@ -757,7 +772,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="groupGenero"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Comedia Romantica"/>
+                <Property name="text" type="java.lang.String" value="Comedia rom&#xe1;ntica"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonMusical">
@@ -781,7 +796,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="groupGenero"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Accion"/>
+                <Property name="text" type="java.lang.String" value="Acci&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonCrimen">
@@ -797,7 +812,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="groupGenero"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Ciencia Ficcion"/>
+                <Property name="text" type="java.lang.String" value="Ciencia ficci&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonAventura">
@@ -828,7 +843,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="groupGenero"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Fantasia"/>
+                <Property name="text" type="java.lang.String" value="Fantas&#xed;a"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
